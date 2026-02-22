@@ -1,18 +1,18 @@
-# grid-kit
+# tool-grid
 
 A toggleable grid overlay for design QA. Adjust columns, gutters, max-width, and margins — right in the browser.
 
 ## Install
 
 ```bash
-npm install grid-kit
+npm install tool-grid
 ```
 
 ## Quick Start
 
 ```tsx
-import { GridOverlay, GridControls, useGridState } from "grid-kit";
-import "grid-kit/styles.css";
+import { GridOverlay, GridControls, useGridState } from "tool-grid";
+import "tool-grid/styles.css";
 
 function App() {
   const { config, setConfig, visible, toggle } = useGridState({
@@ -151,7 +151,7 @@ import type {
   GridOverlayProps,
   GridControlsProps,
   ControlsPosition,
-} from "grid-kit";
+} from "tool-grid";
 ```
 
 ## License
