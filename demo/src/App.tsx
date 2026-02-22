@@ -1,5 +1,5 @@
-import { GridOverlay, GridControls, useGridState } from "tool-grids";
-import "tool-grids/styles.css";
+import { GridOverlay, GridControls, useGridState } from "grid-kit";
+import "grid-kit/styles.css";
 
 const demoStyles = {
   page: {

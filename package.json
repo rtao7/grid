@@ -1,5 +1,5 @@
 {
-  "name": "tool-grids",
+  "name": "grid-kit",
   "version": "0.1.0",
   "description": "A toggleable grid overlay for design QA — adjust columns, gutters, max-width, and margins in the browser.",
   "type": "module",

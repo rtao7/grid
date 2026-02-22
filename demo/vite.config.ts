@@ -7,11 +7,11 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: "tool-grids/styles.css",
+        find: "grid-kit/styles.css",
         replacement: path.resolve(__dirname, "../src/grid-overlay.css"),
       },
       {
-        find: "tool-grids",
+        find: "grid-kit",
         replacement: path.resolve(__dirname, "../src"),
       },
     ],
