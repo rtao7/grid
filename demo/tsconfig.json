@@ -6,7 +6,12 @@
     "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "tool-grid": ["../src"],
+      "tool-grid/styles.css": ["../src/grid-overlay.css"]
+    }
   },
   "include": ["src"]
 }

@@ -1,5 +1,5 @@
-import { GridOverlay, GridControls, useGridState } from "grid-kit";
-import "grid-kit/styles.css";
+import { GridOverlay, GridControls, useGridState } from "tool-grid";
+import "tool-grid/styles.css";
 
 const demoStyles = {
   page: {
@@ -63,8 +63,8 @@ export function App() {
         <h1 style={demoStyles.h1}>Grid Overlay</h1>
         <p style={demoStyles.subtitle}>
           A toggleable grid overlay for design QA. Adjust columns, gutters,
-          max-width, and margins — right in the browser. Press{" "}
-          <kbd>Cmd+G</kbd> to toggle.
+          max-width, and margins — right in the browser. Press <kbd>Cmd+G</kbd>{" "}
+          to toggle.
         </p>
 
         <div style={demoStyles.grid}>
