@@ -14,6 +14,6 @@ export default defineConfig({
     };
   },
   onSuccess() {
-    copyFileSync("src/grid-overlay.css", "dist/grid-overlay.css");
+    copyFileSync("src/styles/grid-overlay.css", "dist/grid-overlay.css");
   },
 });

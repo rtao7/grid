@@ -1,6 +1,6 @@
-export { GridOverlay } from "./GridOverlay";
-export { GridControls } from "./GridControls";
-export { useGridState } from "./useGridState";
+export { GridOverlay } from "./components/GridOverlay";
+export { GridControls } from "./components/GridControls";
+export { useGridState } from "./hooks/useGridState";
 export { DEFAULT_CONFIG } from "./types";
 
 export type {

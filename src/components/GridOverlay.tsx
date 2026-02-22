@@ -1,6 +1,6 @@
 import React from "react";
-import type { GridOverlayProps } from "./types";
-import { DEFAULT_CONFIG } from "./types";
+import type { GridOverlayProps } from "../types";
+import { DEFAULT_CONFIG } from "../types";
 
 export function GridOverlay({
   columns = DEFAULT_CONFIG.columns,

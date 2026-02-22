@@ -10,7 +10,7 @@
     "baseUrl": ".",
     "paths": {
       "tool-grid": ["../src"],
-      "tool-grid/styles.css": ["../src/grid-overlay.css"]
+      "tool-grid/styles.css": ["../src/styles/grid-overlay.css"]
     }
   },
   "include": ["src"]

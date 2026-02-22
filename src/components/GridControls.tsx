@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import type { GridControlsProps, GridConfig } from "./types";
+import type { GridControlsProps, GridConfig } from "../types";
 
 const isMac =
   typeof navigator !== "undefined" && /Mac/.test(navigator.userAgent);

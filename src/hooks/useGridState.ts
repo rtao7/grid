@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
-import type { GridConfig, GridState } from "./types";
-import { DEFAULT_CONFIG } from "./types";
+import type { GridConfig, GridState } from "../types";
+import { DEFAULT_CONFIG } from "../types";
 
 export function useGridState(
   initialConfig: Partial<GridConfig> = {}
