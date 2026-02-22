@@ -1,0 +1,51 @@
+{
+  "name": "tool-grids",
+  "version": "0.1.0",
+  "description": "A toggleable grid overlay for design QA — adjust columns, gutters, max-width, and margins in the browser.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./dist/grid-overlay.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "cd demo && npm run dev",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.6.3",
+    "tsup": "^8.3.5"
+  },
+  "keywords": [
+    "grid",
+    "overlay",
+    "design",
+    "columns",
+    "gutters",
+    "layout",
+    "react",
+    "dev-tools"
+  ],
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ]
+}

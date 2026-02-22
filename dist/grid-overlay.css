@@ -1,0 +1,239 @@
+/* ==========================================================================
+   Grid Overlay — CSS Custom Properties
+   Override these on [data-grid-overlay] to theme the overlay.
+   ========================================================================== */
+
+[data-grid-overlay] {
+  --grid-color: rgba(255, 0, 0, 0.1);
+  --grid-outline-color: rgba(255, 0, 0, 0.25);
+  --grid-z-index: 9999;
+}
+
+[data-grid-controls] {
+  --grid-controls-bg: #1a1a1a;
+  --grid-controls-text: #e5e5e5;
+  --grid-controls-border: #333333;
+  --grid-controls-accent: #3b82f6;
+  --grid-controls-input-bg: #2a2a2a;
+  --grid-controls-radius: 10px;
+}
+
+/* ==========================================================================
+   Overlay
+   ========================================================================== */
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--grid-z-index);
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+
+.grid-overlay__container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: stretch;
+}
+
+.grid-overlay__column {
+  height: 100%;
+  background-color: var(--grid-color);
+  outline: 1px solid var(--grid-outline-color);
+  outline-offset: -1px;
+}
+
+/* ==========================================================================
+   Controls Panel
+   ========================================================================== */
+
+.grid-controls {
+  position: fixed;
+  z-index: calc(var(--grid-z-index) + 1);
+  pointer-events: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--grid-controls-text);
+  background: var(--grid-controls-bg);
+  border: 1px solid var(--grid-controls-border);
+  border-radius: var(--grid-controls-radius);
+  padding: 14px;
+  min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+
+.grid-controls--top-left {
+  top: 16px;
+  left: 16px;
+}
+
+.grid-controls--top-right {
+  top: 16px;
+  right: 16px;
+}
+
+.grid-controls--bottom-left {
+  bottom: 16px;
+  left: 16px;
+}
+
+.grid-controls--bottom-right {
+  bottom: 16px;
+  right: 16px;
+}
+
+/* Header */
+
+.grid-controls__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--grid-controls-border);
+}
+
+.grid-controls__title {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+.grid-controls__toggle {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background: var(--grid-controls-input-bg);
+  border: 1px solid var(--grid-controls-border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  padding: 0;
+}
+
+.grid-controls__toggle[aria-checked="true"] {
+  background: var(--grid-controls-accent);
+  border-color: var(--grid-controls-accent);
+}
+
+.grid-controls__toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.grid-controls__toggle[aria-checked="true"]::after {
+  transform: translateX(16px);
+}
+
+/* Field rows */
+
+.grid-controls__field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.grid-controls__field:last-child {
+  margin-bottom: 0;
+}
+
+.grid-controls__label {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--grid-controls-text);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.grid-controls__input {
+  width: 56px;
+  height: 28px;
+  padding: 0 8px;
+  background: var(--grid-controls-input-bg);
+  border: 1px solid var(--grid-controls-border);
+  border-radius: 6px;
+  color: var(--grid-controls-text);
+  font-size: 12px;
+  font-family: inherit;
+  text-align: right;
+  outline: none;
+  transition: border-color 0.15s ease;
+  -moz-appearance: textfield;
+}
+
+.grid-controls__input::-webkit-inner-spin-button,
+.grid-controls__input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.grid-controls__input:focus {
+  border-color: var(--grid-controls-accent);
+}
+
+.grid-controls__slider {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--grid-controls-input-bg);
+  border-radius: 2px;
+  outline: none;
+}
+
+.grid-controls__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--grid-controls-accent);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.grid-controls__slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.grid-controls__slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--grid-controls-accent);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Keyboard hint */
+
+.grid-controls__hint {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--grid-controls-border);
+  font-size: 10px;
+  opacity: 0.4;
+  text-align: center;
+}
+
+.grid-controls__kbd {
+  font-family: inherit;
+  font-size: 10px;
+  padding: 1px 4px;
+  background: var(--grid-controls-input-bg);
+  border: 1px solid var(--grid-controls-border);
+  border-radius: 3px;
+}
