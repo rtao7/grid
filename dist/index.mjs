@@ -6,7 +6,7 @@ var DEFAULT_CONFIG = {
   margin: 0
 };
 
-// src/GridOverlay.tsx
+// src/components/GridOverlay.tsx
 import { jsx } from "react/jsx-runtime";
 function GridOverlay({
   columns = DEFAULT_CONFIG.columns,
@@ -34,7 +34,7 @@ function GridOverlay({
   );
 }
 
-// src/GridControls.tsx
+// src/components/GridControls.tsx
 import { useCallback } from "react";
 import { jsx as jsx2, jsxs } from "react/jsx-runtime";
 var isMac = typeof navigator !== "undefined" && /Mac/.test(navigator.userAgent);
@@ -152,7 +152,7 @@ function GridControls({
   );
 }
 
-// src/useGridState.ts
+// src/hooks/useGridState.ts
 import { useState, useCallback as useCallback2, useEffect } from "react";
 function useGridState(initialConfig = {}) {
   const [config, setConfigState] = useState({
@@ -178,10 +178,46 @@ function useGridState(initialConfig = {}) {
   }, [toggle]);
   return { config, setConfig, visible, toggle, setVisible };
 }
+
+// src/components/GridTool.tsx
+import { Fragment, jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
+function GridTool({
+  initialConfig,
+  position,
+  overlayClassName,
+  controlsClassName
+}) {
+  const { config, setConfig, visible, toggle } = useGridState(initialConfig);
+  return /* @__PURE__ */ jsxs2(Fragment, { children: [
+    /* @__PURE__ */ jsx3(
+      GridOverlay,
+      {
+        columns: config.columns,
+        gutter: config.gutter,
+        maxWidth: config.maxWidth,
+        margin: config.margin,
+        visible,
+        className: overlayClassName
+      }
+    ),
+    /* @__PURE__ */ jsx3(
+      GridControls,
+      {
+        config,
+        setConfig,
+        visible,
+        toggle,
+        position,
+        className: controlsClassName
+      }
+    )
+  ] });
+}
 export {
   DEFAULT_CONFIG,
   GridControls,
   GridOverlay,
+  GridTool,
   useGridState
 };
 //# sourceMappingURL=index.mjs.map

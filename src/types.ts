@@ -53,9 +53,20 @@ export interface GridControlsProps {
   className?: string;
 }
 
+export interface GridToolProps {
+  /** Initial grid configuration (uses sensible defaults if omitted) */
+  initialConfig?: Partial<GridConfig>;
+  /** Corner position of the controls panel */
+  position?: ControlsPosition;
+  /** Additional CSS class name for the overlay */
+  overlayClassName?: string;
+  /** Additional CSS class name for the controls */
+  controlsClassName?: string;
+}
+
 export const DEFAULT_CONFIG: GridConfig = {
   columns: 12,
   gutter: 20,
   maxWidth: 1440,
-  margin: 0,
+  margin: 8,
 };

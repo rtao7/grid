@@ -23,6 +23,7 @@ __export(index_exports, {
   DEFAULT_CONFIG: () => DEFAULT_CONFIG,
   GridControls: () => GridControls,
   GridOverlay: () => GridOverlay,
+  GridTool: () => GridTool,
   useGridState: () => useGridState
 });
 module.exports = __toCommonJS(index_exports);
@@ -35,7 +36,7 @@ var DEFAULT_CONFIG = {
   margin: 0
 };
 
-// src/GridOverlay.tsx
+// src/components/GridOverlay.tsx
 var import_jsx_runtime = require("react/jsx-runtime");
 function GridOverlay({
   columns = DEFAULT_CONFIG.columns,
@@ -63,7 +64,7 @@ function GridOverlay({
   );
 }
 
-// src/GridControls.tsx
+// src/components/GridControls.tsx
 var import_react = require("react");
 var import_jsx_runtime2 = require("react/jsx-runtime");
 var isMac = typeof navigator !== "undefined" && /Mac/.test(navigator.userAgent);
@@ -181,7 +182,7 @@ function GridControls({
   );
 }
 
-// src/useGridState.ts
+// src/hooks/useGridState.ts
 var import_react2 = require("react");
 function useGridState(initialConfig = {}) {
   const [config, setConfigState] = (0, import_react2.useState)({
@@ -207,11 +208,47 @@ function useGridState(initialConfig = {}) {
   }, [toggle]);
   return { config, setConfig, visible, toggle, setVisible };
 }
+
+// src/components/GridTool.tsx
+var import_jsx_runtime3 = require("react/jsx-runtime");
+function GridTool({
+  initialConfig,
+  position,
+  overlayClassName,
+  controlsClassName
+}) {
+  const { config, setConfig, visible, toggle } = useGridState(initialConfig);
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+      GridOverlay,
+      {
+        columns: config.columns,
+        gutter: config.gutter,
+        maxWidth: config.maxWidth,
+        margin: config.margin,
+        visible,
+        className: overlayClassName
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+      GridControls,
+      {
+        config,
+        setConfig,
+        visible,
+        toggle,
+        position,
+        className: controlsClassName
+      }
+    )
+  ] });
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   DEFAULT_CONFIG,
   GridControls,
   GridOverlay,
+  GridTool,
   useGridState
 });
 //# sourceMappingURL=index.js.map

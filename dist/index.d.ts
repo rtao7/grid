@@ -46,7 +46,19 @@ interface GridControlsProps {
     /** Additional CSS class name */
     className?: string;
 }
+interface GridToolProps {
+    /** Initial grid configuration (uses sensible defaults if omitted) */
+    initialConfig?: Partial<GridConfig>;
+    /** Corner position of the controls panel */
+    position?: ControlsPosition;
+    /** Additional CSS class name for the overlay */
+    overlayClassName?: string;
+    /** Additional CSS class name for the controls */
+    controlsClassName?: string;
+}
 declare const DEFAULT_CONFIG: GridConfig;
+
+declare function GridTool({ initialConfig, position, overlayClassName, controlsClassName, }: GridToolProps): react_jsx_runtime.JSX.Element;
 
 declare function GridOverlay({ columns, gutter, maxWidth, margin, visible, className, }: GridOverlayProps): react_jsx_runtime.JSX.Element | null;
 
@@ -54,4 +66,4 @@ declare function GridControls({ config, setConfig, visible, toggle, position, cl
 
 declare function useGridState(initialConfig?: Partial<GridConfig>): GridState;
 
-export { type ControlsPosition, DEFAULT_CONFIG, type GridConfig, GridControls, type GridControlsProps, GridOverlay, type GridOverlayProps, type GridState, useGridState };
+export { type ControlsPosition, DEFAULT_CONFIG, type GridConfig, GridControls, type GridControlsProps, GridOverlay, type GridOverlayProps, type GridState, GridTool, type GridToolProps, useGridState };

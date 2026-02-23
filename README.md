@@ -10,33 +10,17 @@ npm install tool-grid
 
 ## Quick Start
 
+Drop in `<GridTool />` — no props needed.
+
 ```tsx
-import { GridOverlay, GridControls, useGridState } from "tool-grid";
+import { GridTool } from "tool-grid";
 import "tool-grid/styles.css";
 
 function App() {
-  const { config, setConfig, visible, toggle } = useGridState({
-    columns: 12,
-    gutter: 20,
-    maxWidth: 1280,
-  });
-
   return (
     <>
       <YourApp />
-      <GridOverlay
-        columns={config.columns}
-        gutter={config.gutter}
-        maxWidth={config.maxWidth}
-        margin={config.margin}
-        visible={visible}
-      />
-      <GridControls
-        config={config}
-        setConfig={setConfig}
-        visible={visible}
-        toggle={toggle}
-      />
+      <GridTool />
     </>
   );
 }
@@ -44,9 +28,35 @@ function App() {
 
 Press **Cmd+G** (Mac) or **Ctrl+G** (Windows/Linux) to toggle visibility.
 
+### With custom defaults
+
+```tsx
+<GridTool
+  initialConfig={{ columns: 6, gutter: 16, maxWidth: 1280 }}
+  position="top-left"
+/>
+```
+
 ## API
 
-### `useGridState(initialConfig?)`
+### `<GridTool />`
+
+All-in-one component. Renders the grid overlay and controls panel with built-in state management.
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `initialConfig` | `Partial<GridConfig>` | `{}` | Initial grid settings |
+| `position` | `ControlsPosition` | `"bottom-right"` | Panel corner placement |
+| `overlayClassName` | `string` | — | CSS class for the overlay |
+| `controlsClassName` | `string` | — | CSS class for the controls |
+
+---
+
+### Advanced: individual components
+
+For full control over state and rendering, use the pieces directly.
+
+#### `useGridState(initialConfig?)`
 
 React hook that manages grid configuration state and visibility.
 
@@ -69,7 +79,7 @@ const { config, setConfig, visible, toggle, setVisible } = useGridState({
 | `toggle` | `() => void` | Toggle visibility |
 | `setVisible` | `(visible: boolean) => void` | Set visibility directly |
 
-### `<GridOverlay />`
+#### `<GridOverlay />`
 
 Renders the column overlay. Non-interactive (`pointer-events: none`).
 
@@ -82,7 +92,7 @@ Renders the column overlay. Non-interactive (`pointer-events: none`).
 | `visible` | `boolean` | `true` | Show/hide the overlay |
 | `className` | `string` | — | Additional CSS class |
 
-### `<GridControls />`
+#### `<GridControls />`
 
 Floating panel with sliders and inputs to adjust the grid.
 
@@ -148,6 +158,7 @@ All types are exported:
 import type {
   GridConfig,
   GridState,
+  GridToolProps,
   GridOverlayProps,
   GridControlsProps,
   ControlsPosition,

@@ -1,11 +1,11 @@
-import { GridOverlay, GridControls, useGridState } from "tool-grid";
+import { GridTool } from "tool-grid";
 import "tool-grid/styles.css";
 
 const demoStyles = {
   page: {
-    maxWidth: 960,
     margin: "0 auto",
-    padding: "80px 24px",
+    display: "grid",
+    gridTemplateColumns: "repeat(12, [col-start] 1fr)",
     fontFamily:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
   },
@@ -16,16 +16,18 @@ const demoStyles = {
     lineHeight: 1.1,
     marginBottom: 16,
     color: "#111",
+    gridColumn: "col-start / span 12",
   },
   subtitle: {
     fontSize: 18,
     lineHeight: 1.6,
     color: "#666",
-    maxWidth: 560,
     marginBottom: 48,
+    gridColumn: "col-start / span 8",
   },
   grid: {
     display: "grid",
+    gridColumn: "col-start / span 12",
     gridTemplateColumns: "repeat(3, 1fr)",
     gap: 20,
     marginBottom: 48,
@@ -50,13 +52,6 @@ const demoStyles = {
 } as const;
 
 export function App() {
-  const { config, setConfig, visible, toggle } = useGridState({
-    columns: 12,
-    gutter: 20,
-    maxWidth: 1440,
-    margin: 0,
-  });
-
   return (
     <>
       <div style={demoStyles.page}>
@@ -79,20 +74,7 @@ export function App() {
           ))}
         </div>
       </div>
-
-      <GridOverlay
-        columns={config.columns}
-        gutter={config.gutter}
-        maxWidth={config.maxWidth}
-        margin={config.margin}
-        visible={visible}
-      />
-      <GridControls
-        config={config}
-        setConfig={setConfig}
-        visible={visible}
-        toggle={toggle}
-      />
+      <GridTool />
     </>
   );
 }
