@@ -1,9 +1,9 @@
 // src/types.ts
 var DEFAULT_CONFIG = {
   columns: 12,
-  gutter: 20,
-  maxWidth: 1440,
-  margin: 0
+  gutter: 16,
+  maxWidth: 2560,
+  margin: 16
 };
 
 // src/components/GridOverlay.tsx
@@ -72,7 +72,7 @@ function GridControls({
   setConfig,
   visible,
   toggle,
-  position = "bottom-right",
+  position = "top-right",
   className
 }) {
   const update = useCallback(

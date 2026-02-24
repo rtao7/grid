@@ -66,7 +66,7 @@ export interface GridToolProps {
 
 export const DEFAULT_CONFIG: GridConfig = {
   columns: 12,
-  gutter: 20,
-  maxWidth: 1440,
-  margin: 8,
+  gutter: 16,
+  maxWidth: 2560,
+  margin: 16,
 };

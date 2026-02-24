@@ -44,14 +44,14 @@ export function GridControls({
   setConfig,
   visible,
   toggle,
-  position = "bottom-right",
+  position = "top-right",
   className,
 }: GridControlsProps) {
   const update = useCallback(
     (key: keyof GridConfig) => (value: number) => {
       setConfig({ [key]: value });
     },
-    [setConfig]
+    [setConfig],
   );
 
   return (
